@@ -1,0 +1,191 @@
+/*  VARIABLES */
+:root {
+    --bg--white: #ffffff;
+    --bg--grey: #f5f5f5;
+    --text: #999999;
+}
+
+/* FUENTES */
+
+@font-face {
+    font-family: TitilliumFont;
+    src: url("fonts/Titillium_Web/TitilliumWeb-Regular.ttf");
+}
+
+/* SELECTORES GLOBALES */
+
+body {
+    font-family: TitilliumFont;
+}
+
+h1 {
+    font-size: 66px;
+    font-weight: 600;
+}
+
+p {
+    font-size: 18px;
+    color: var(--text);
+    line-height: 1.8;
+    margin-bottom: 0;
+}
+
+.content-center h2 {
+    margin-bottom: 20px;
+}
+
+.topmargin-xs {
+    margin-top: 15px;
+}
+.topmargin-sm {
+    margin-top: 30px;
+}
+.topmargin-lg {
+    margin-top: 90px;
+}
+
+.btn {
+    font-size: 14px;
+    padding: 15px 26px;
+    min-width: 160px;
+    border-radius: 2px;
+    display: inline-block;
+}
+
+.btn-light {
+    background-color: var(--bg--white);
+    color: #1a1a1a;
+    border: 2px solid var(--bg--white);
+}
+
+.btn i {
+    font-size: 14px;
+    margin-left: 5px;
+}
+
+/* NAVEGACION */
+
+.navbar {
+    background-color: var(--bg--white);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+    min-height: 100px;
+    font-size: 120%;
+}
+.navbar-brand {
+    color: #1a1a1a;
+    font-size: 138%;
+}
+.nav-link {
+    color: #1a1a1a;
+}
+
+.nav-link:hover {
+    color: #1a1a1a;
+}
+
+.navbar-brand:hover {
+    color: #1a1a1a;
+}
+
+.nav-item {
+    margin-left: 4%;
+}
+
+.navbar {
+    font-size: 140%;
+}
+
+.navbar-toggler {
+    font-size: 35px;
+}
+
+.navbar-toggler {
+    outline: none;
+}
+
+/* SECCIONES */
+
+#coverPage {
+    background-image: url("../assets/img/cars.jpg");
+    background-size: cover;
+    min-height: 866px;
+    padding-top: 10%;
+    color: var(--bg--white);
+}
+
+#coverPage p {
+    color: var(--bg--white);
+}
+
+#main-msg {
+    padding-top: 11%;
+}
+
+.content-center {
+    margin: 0 auto;
+    width: 56%;
+    text-align: center;
+}
+
+#cars {
+    padding: 10%;
+}
+
+.data-cars {
+    display: flex;
+    overflow-x: scroll;
+    margin-left: -8px;
+    margin-right: -8px;
+    padding-bottom: 3px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.content-car {
+    width: 250px;
+}
+
+.content-car img {
+    max-width: 80%;
+}
+
+.aboutUs {
+    background-color: var(--bg--grey);
+}
+
+.aboutUs iframe {
+    width: 97%;
+    margin-left: 1%;
+}
+
+.datos-taller {
+    padding-top: 22%;
+}
+
+/* FOOTER */
+
+footer {
+    background-color: var(--bg--grey);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 575.98px) {
+    h1 {
+        font-size: 40px;
+        line-height: normal;
+    }
+
+    #main-msg {
+        padding-top: 70%;
+        width: 97%;
+    }
+}
+
+/* @media (min-width: 576px) and (max-width: 767.98px) { ... }
+
+@media (min-width: 768px) and (max-width: 991.98px) { ... }
+
+@media (min-width: 992px) and (max-width: 1199.98px) { ... }
+
+@media (min-width: 1200px) { ... } */

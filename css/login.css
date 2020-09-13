@@ -1,0 +1,83 @@
+/*  VARIABLES */
+:root {
+    --bg--white: #ffffff;
+    --bg--grey: #f5f5f5;
+    --text: #999999;
+}
+
+#login {
+    background-image: url("../assets/img/road.jpeg");
+    background-size: cover;
+    background-position-x: 58%;
+    min-height: 766px;
+}
+
+#login #content-form {
+    width: 35%;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 22%;
+}
+
+#content-form form {
+    height: 38%;
+    border: 2px solid var(--bg--grey);
+    background-color: var(--bg--grey);
+    padding: 5%;
+}
+
+#login h4 {
+    font-size: 170%;
+}
+
+#login .btn {
+    width: 100%;
+    margin-bottom: 3%;
+}
+
+#login #registro {
+    opacity: 0.8;
+}
+
+#login a {
+   
+    font-size: 125%;
+}
+
+#rememberData{
+    text-align: initial;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 575.98px) { 
+   
+    #login #content-form {
+        width: 95%;
+        padding-top: 57%;
+    }
+
+    #content-form form{
+        height: 47%;
+    }
+
+    #login{
+        min-height: 625px;
+    }
+
+ }
+
+@media (min-width: 576px) and (max-width: 991.98px) { 
+
+    #login #content-form {
+        width: 68%;
+        padding-top: 35%;
+    }
+
+ }
+
+/* @media (min-width: 768px) and (max-width: 991.98px) { ... }
+
+@media (min-width: 992px) and (max-width: 1199.98px) { ... }
+
+@media (min-width: 1200px) { ... } */ */
