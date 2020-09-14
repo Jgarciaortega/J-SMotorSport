@@ -19,8 +19,14 @@ body {
 }
 
 h1 {
-    font-size: 66px;
+    font-size: 40px;
+    line-height: normal;
     font-weight: 600;
+}
+
+#main-msg {
+    padding-top: 39%;
+    width: 97%;
 }
 
 p {
@@ -68,8 +74,7 @@ p {
 .navbar {
     background-color: var(--bg--white);
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
-    min-height: 100px;
-    font-size: 120%;
+    font-size: 80%;
 }
 .navbar-brand {
     color: #1a1a1a;
@@ -87,12 +92,15 @@ p {
     color: #1a1a1a;
 }
 
-.nav-item {
-    margin-left: 4%;
+.navbar button{
+    padding-bottom: 3%;
+}
+.navbar button i{
+    font-size: 60%;
 }
 
-.navbar {
-    font-size: 140%;
+.nav-item {
+    margin-left: 4%;
 }
 
 .navbar-toggler {
@@ -105,20 +113,21 @@ p {
 
 /* SECCIONES */
 
+section{
+    background-color: var(--bg--grey);
+}
+
 #coverPage {
     background-image: url("../assets/img/cars.jpg");
     background-size: cover;
     min-height: 866px;
     padding-top: 10%;
     color: var(--bg--white);
+    margin: 1%;
 }
 
 #coverPage p {
     color: var(--bg--white);
-}
-
-#main-msg {
-    padding-top: 11%;
 }
 
 .content-center {
@@ -128,34 +137,41 @@ p {
 }
 
 #cars {
-    padding: 10%;
+  
+    padding-top: 25%;
+}
+
+#cars h2{
+    font-size: 124%;
 }
 
 .data-cars {
-    display: flex;
     overflow-x: scroll;
-    margin-left: -8px;
-    margin-right: -8px;
-    padding-bottom: 3px;
-    padding-left: 8px;
-    padding-right: 8px;
+    overflow-y: hidden;
+    white-space: nowrap;
 }
 
 .content-car {
-    width: 250px;
+    display: inline-block;
+    width: 85%;
+    background-color: var(--bg--white);
+    padding-top: 4%;
 }
 
 .content-car img {
-    max-width: 80%;
+    max-width: 100%;
+    padding: 1%;
+    padding-right: 1.5%;
 }
 
-.aboutUs {
-    background-color: var(--bg--grey);
+.carInfo{
+    padding: 4%;
 }
+
 
 .aboutUs iframe {
     width: 97%;
-    margin-left: 1%;
+   
 }
 
 .datos-taller {
@@ -170,17 +186,39 @@ footer {
 
 /* RESPONSIVE */
 
-@media (max-width: 575.98px) {
-    h1 {
-        font-size: 40px;
-        line-height: normal;
+@media (min-width: 760px){
+    .content-car{
+        width: 38%;
     }
 
-    #main-msg {
-        padding-top: 70%;
-        width: 97%;
+    #cars{
+        padding-top: 12%;
     }
 }
+
+@media (min-width:900px){
+    .content-car{
+        width: 25%;
+    }
+
+    #cars{
+        padding-top: 8%;
+    }
+}
+
+@media (min-width:1200px){
+    .content-car{
+        width: 15%;
+    }
+
+    #cars{
+        padding-top: 6%;
+    }
+}
+
+/* @media (max-width: 575.98px) {
+  
+} */
 
 /* @media (min-width: 576px) and (max-width: 767.98px) { ... }
 

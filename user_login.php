@@ -8,26 +8,24 @@
         $email = $_POST['email'];
         $pass = $_POST['password'];
 
-        $query = "SELECT * FROM usuario where email like '$email'";
+        $query = "SELECT * FROM usuario where email like '$email' and password='$pass'";
         $result = mysqli_query($conn, $query);
 
-        if ($result->rowCount() == 1){
+        if ($result->num_rows > 0){
 
-        $_SESSION['message'] =  'Bienvenido';
+            $_SESSION['message'] =  'Bienvenido';
+            header("Location: index.php");
 
-            } else {
-               
-                $_SESSION['message'] = 'Email o contraseña inválidos';
-               
-            }
-          
-            mysqli_close($conn);
+        }else{
 
-       
-          header("Location: login.php");
-       
+            $_SESSION['message'] = 'Email o contraseña inválidos';
+            header("Location: login.php");
+        }
+
+        mysqli_close($conn);
+
         
- 
+       
     }
 
     if(isset($_POST['sign_in'])){

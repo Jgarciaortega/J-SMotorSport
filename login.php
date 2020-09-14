@@ -30,7 +30,7 @@ include("includes/header.php");
                         <i class="fas fa-user"></i>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="./views/login.php">Accede</a>
+                        <a class="dropdown-item" href="./login.php">Accede</a>
                         <a class="dropdown-item" href="#">Registro</a>
                     </div>
                 </li>

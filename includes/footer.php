@@ -3,20 +3,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm">
-                    <!-- Links -->
-                    <section class="widget links">
-                        <h3>Random Stuff</h3>
-                        <ul class="style2">
-                            <li><a href="#">Etiam feugiat condimentum</a></li>
-                            <li><a href="#">Aliquam imperdiet suscipit odio</a></li>
-                            <li><a href="#">Sed porttitor cras in erat nec</a></li>
-                            <li><a href="#">Felis varius pellentesque potenti</a></li>
-                            <li><a href="#">Nullam scelerisque blandit leo</a></li>
-                        </ul>
-                    </section>
-
-                </div>
-                <div class="col-sm">
                     <!-- Contact -->
                     <section class="widget contact last">
                         <h3>Contact Us</h3>
