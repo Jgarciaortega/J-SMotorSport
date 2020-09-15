@@ -9,18 +9,19 @@
     background-image: url("../assets/img/road.jpeg");
     background-size: cover;
     background-position-x: 58%;
-    min-height: 766px;
+    min-height: 625px;
 }
 
+
 #login #content-form {
-    width: 35%;
     margin: 0 auto;
     text-align: center;
-    padding-top: 22%;
+    width: 95%;
+    padding-top: 35%;
 }
 
 #content-form form {
-    height: 38%;
+    height: 47%;
     border: 2px solid var(--bg--grey);
     background-color: var(--bg--grey);
     padding: 5%;
@@ -33,15 +34,11 @@
 #login .btn {
     width: 100%;
     margin-bottom: 3%;
+    padding: 7px;
 }
 
 #login #registro {
     opacity: 0.8;
-}
-
-#login a {
-   
-    font-size: 125%;
 }
 
 #rememberData{
@@ -52,27 +49,13 @@
 
 @media (max-width: 575.98px) { 
    
-    #login #content-form {
-        width: 95%;
-        padding-top: 57%;
-    }
-
-    #content-form form{
-        height: 47%;
-    }
-
-    #login{
-        min-height: 625px;
-    }
+ 
 
  }
 
 @media (min-width: 576px) and (max-width: 991.98px) { 
 
-    #login #content-form {
-        width: 68%;
-        padding-top: 35%;
-    }
+
 
  }
 

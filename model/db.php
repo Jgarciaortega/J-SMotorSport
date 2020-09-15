@@ -9,9 +9,9 @@ $conn = mysqli_connect(
     'jAnds_motorSport'
 );
 
-//   if(isset($conn)){
-//       echo ' jands_motorsportDB is connected';
-//   }
+//    if(isset($conn)){
+//        echo ' jands_motorsportDB is connected';
+//    }
 
 ?>
 

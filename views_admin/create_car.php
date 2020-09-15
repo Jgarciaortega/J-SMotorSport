@@ -1,9 +1,8 @@
 <?php
-include("db.php");
+include("../includes/header.php");
+include("../includes/header_admin.php");
 ?>
-<?php
-include("includes/header_admin.php");
-?>
+
 
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light ">

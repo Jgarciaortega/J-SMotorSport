@@ -11,13 +11,11 @@
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
     <!-- My css -->
-    <link rel="stylesheet" href="css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/login.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="css/index.css" rel="stylesheet">
+   
     <!-- Fontawesome -->
     <link rel="stylesheet" href="css/fontawesome/css/all.css" rel="stylesheet">
- 
-
+   
       <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -29,7 +27,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
-    <script src="./js/index.js"></script>
 
     <title>J&S MotorSport</title>
+    
+    <!-- <script src="js/admin.js"></script> -->
+
+    
 </head>
