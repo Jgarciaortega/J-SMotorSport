@@ -20,6 +20,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">Stock</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../index.php">Salir</a>
+            </li>
         </ul>
     </div>
 </nav>
