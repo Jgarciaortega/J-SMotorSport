@@ -14,30 +14,35 @@
         $query = "SELECT * FROM usuario where email like '$email'";
         $result = mysqli_query($conn, $query);
 
-       // echo ($query);
-    //     $hash = verify($pass);
-
     //     // PASARELA DE PAGOS
     //     //https://www.jose-aguilar.com/blog/como-implementar-una-pasarela-de-pago-mediante-tarjeta-de-credito-con-php/
 
-        if ($result->num_rows > 0){
+    if ($result->num_rows > 0){
 
-            if ($email = 'admin'){
+    while($row = mysqli_fetch_array($result)){
+
+        $hash = $row['password'];
+
+        if(verify($password, $hash)){
+
+            echo ('Password ok');
+
+            if ($email == 'admin'){
 
                 header("Location: ../views_admin/admin_index.php");
-
+        
             }else{
-
+        
                 header("Location: ../index.php");
             }
-        
-        }else{
-
-            $_SESSION['message'] = 'Email o contraseña inválidos';
-
-           header("Location: ../login.php");
-            
         }
+    }
+
+    }else{
+    
+        $_SESSION['message'] = 'Email o contraseña inválidos';
+        header("Location: ../login.php");
+    }
 
         mysqli_close($conn);
 
