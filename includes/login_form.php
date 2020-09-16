@@ -1,4 +1,4 @@
-<form method="post" action="./controllers/user_login.php"">
+<form method="post" action="./controllers/user_login.php">
     <h4>Inicia sesión</h4>
     <div class="input-group mb-3">
         <input type="text" name="email" class="form-control" aria-describedby="basic-addon3" placeholder="Email">

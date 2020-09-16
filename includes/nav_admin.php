@@ -11,14 +11,14 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+                <a class="nav-link" href="./admin_index.php">Credenciales</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="./create_car.php">Añadir</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Stock</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="./admin_index.php">Usuarios</a>
             </li>
         </ul>
     </div>
