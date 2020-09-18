@@ -9,25 +9,22 @@ include("../includes/header_admin.php");
 </div>
 
 <div class="container">
-    <form>
+<form method="post" action="../controllers/admin_create_car.php" enctype="multipart/form-data">
         <div class="form-group">
-            <input type="text" class="form-control mt-3" id="marca" placeholder="Marca">
-            <input type="text" class="form-control mt-3" id="modelo" placeholder="Modelo">
-            <input type="text" class="form-control mt-3" id="anyo" placeholder="Año">
-            <input type="text" class="form-control mt-3" id="km" placeholder="Km">
-            <input type="text" class="form-control mt-3" id="cambio" placeholder="Cambio">
-            <input type="text" class="form-control mt-3" id="puertas" placeholder="Puertas">
-            <input type="text" class="form-control mt-3" id="cv" placeholder="CV">
-            <input type="text" class="form-control mt-3" id="color" placeholder="Color">
-            <input type="text" class="form-control mt-3" id="combustible" placeholder="Combustible">
-            <input type="text" class="form-control mt-3" id="garantia" placeholder="Garantía">
-            <div id="carImages">
-                <input type="file" class="form-control mt-3">
+            <input type="text" class="form-control mt-3" id="marca" placeholder="Marca" name="marca">
+            <input type="text" class="form-control mt-3" id="modelo" placeholder="Modelo" name="modelo">
+            <input type="text" class="form-control mt-3" id="anyo" placeholder="Año" name="anyo">
+            <input type="text" class="form-control mt-3" id="km" placeholder="Km" name="km">
+            <input type="text" class="form-control mt-3" id="cambio" placeholder="Cambio" name="cambio">
+            <input type="text" class="form-control mt-3" id="puertas" placeholder="Puertas" name="puertas">
+            <input type="text" class="form-control mt-3" id="cv" placeholder="CV" name="cv">
+            <input type="text" class="form-control mt-3" id="color" placeholder="Color" name="color">
+            <input type="text" class="form-control mt-3" id="combustible" placeholder="Combustible" name="combustible">
+            <input type="text" class="form-control mt-3" id="garantia" placeholder="Garantía" name="garantia">
+            <div id="carImages" class="mt-2">
+            <input type="file" name="image[]" value="" multiple>
             </div>
-            <div id="content-plus" class="mt-2">
-                <a id="btn-addImage"><i class="fas fa-plus-circle text-secondary"></i></a>
-            </div>
-            <button id="btn-save-car" class="btn btn-primary mt-2">Guardar</button>
+            <button id="btn-save-car" class="btn btn-primary mt-2" name="create_car">Guardar</button>
         </div>
     </form>
    

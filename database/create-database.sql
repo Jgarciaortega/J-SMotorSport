@@ -13,11 +13,6 @@ FLUSH PRIVILEGES;
 -- Creacion tablas
 USE jAnds_motorSport;
 
-CREATE TABLE imagen_coche (
-	id INT(11)NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	nombre varchar(255)
-);
-
 CREATE TABLE coche(
 	id INT(11)NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	marca VARCHAR(255),
@@ -29,10 +24,15 @@ CREATE TABLE coche(
 	cv VARCHAR(255),
 	color VARCHAR(255),
 	combustible VARCHAR(255),
-	garantia VARCHAR(255),
-    id_imagen INT(11),
-	FOREIGN KEY (id_imagen) REFERENCES imagen_coche0 (id) ON UPDATE  NO ACTION  ON DELETE  CASCADE
+	garantia VARCHAR(255)
+    
+);
 
+CREATE TABLE imagen_coche (
+	id INT(11)NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	nombre varchar(255),
+	id_coche INT(11),
+	FOREIGN KEY (id_coche) REFERENCES coche (id) ON UPDATE  NO ACTION  ON DELETE  CASCADE
 );
 
 CREATE TABLE usuario ( 
