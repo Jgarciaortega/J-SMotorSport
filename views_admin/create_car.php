@@ -1,6 +1,7 @@
 <?php
 include("../includes/header.php");
 include("../includes/header_admin.php");
+include("../model/db.php");
 ?>
 
 
@@ -22,9 +23,34 @@ include("../includes/header_admin.php");
             <input type="text" class="form-control mt-3" id="combustible" placeholder="Combustible" name="combustible">
             <input type="text" class="form-control mt-3" id="garantia" placeholder="Garantía" name="garantia">
             <div id="carImages" class="mt-2">
-            <input type="file" name="image[]" value="" multiple>
+            
+            <!-- MENSAJE ERROR SI NO ES UNA IMAGEN -->
+            <?php if(isset($_SESSION['error-type'])) {?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                   <?php  echo $_SESSION['error-type'] ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <?php session_unset(); } ?>
+
+            <!-- MENSAJE ERROR SI EXCEDE DEL LIMITE DE TAMAÑO -->
+            <?php if(isset($_SESSION['error-size'])) {?>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                   <?php  echo $_SESSION['error-size'] ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <?php session_unset(); } ?>
+
+            <label for="">Imagen portada</label> <input type="file" name="main_image" value="">
+            </div>
+            <div id="carImages" class="mt-2">
+            <label for="">Imagenes secundarias</label><input type="file" name="image[]" value="" multiple>
             </div>
             <button id="btn-save-car" class="btn btn-primary mt-2" name="create_car">Guardar</button>
+            
         </div>
     </form>
    

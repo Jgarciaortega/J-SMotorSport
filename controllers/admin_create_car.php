@@ -2,20 +2,64 @@
 
 include("../model/db.php");
 include("../model/encryptor.php");
+include("../plugins/compressImage.php");
+include("../plugins/resizeImage.php");
 
 if(isset($_POST['create_car'])){
 
+    // guarda los datos en la bbdd y devuelve el id generado
     $id_car =  insertCar($conn);
 
+    // si $id_car = -1 ha habido error al guardar en la base de datos
     if($id_car != -1){
+        // si existe imagen de portada ...
+        if(isset($_FILES['main_image'])){
 
+            $fileName = basename($_FILES['main_image']['name']);    
+            $imageTempSource = $_FILES["main_image"]["tmp_name"];  
+            $size_img = $_FILES['main_image']['size'];
+            $succes = uploadImage($fileName, $size_img, $imageTempSource);
+            // si la imagen se ha subido ok se insertan datos en la BBDD
+            if($succes)  insertImage($fileName, 'portada', $id_car, $conn);
+   
+        }
+
+        // ... si existen imagenes secundarias
         if(isset($_FILES['image'])){
 
-            uploadImage($id_car);
+            $cantidad= count($_FILES["image"]["tmp_name"]);
 
-            //insertImage($id_car, $conn);
-        
+            for ($i=0; $i<$cantidad; $i++){
+
+                $fileName = basename($_FILES['image']['name'][$i]);    
+                $imageTempSource = $_FILES["image"]["tmp_name"][$i];  
+                $size_img = $_FILES['image']['size'][$i];  
+                $succes = uploadImage($fileName, $size_img, $imageTempSource);
+                // si la imagen se ha subido ok se insertan datos en la BBDD
+                if($succes) insertImage($fileName, 'secundaria', $id_car, $conn);
+
+            }
+
         }
+
+        //header("Location: ../views_admin/create_car.php");
+
+    }
+
+}
+
+function insertImage($name_image, $tipo, $id_car, $conn){
+
+    // realizamos insercion en bbdd ..
+    $query = "INSERT INTO imagen_coche (id, nombre, tipo, id_coche )values (null,'$name_image','$tipo','$id_car')";
+    $result = mysqli_query($conn, $query);
+
+    if(!$result){
+
+        die('Error al insertar datos imagen en BBDD');
+
+    }else{
+        echo('Exito');
     }
 
 }
@@ -48,59 +92,30 @@ function insertCar($conn){
 
 }
 
-function uploadImage($id_car){
+function uploadImage($fileName, $size_img, $imageTempSource){
 
-    $cantidad= count($_FILES["image"]["tmp_name"]);
-    $size_limit = 1200000; // 1,2Mb
+    // Ruta subida
+    $uploadPath = "../assets/cars_images/"; 
+    // Extensiones permitidas
+    $allowTypes = array('jpg','png','jpeg','gif'); 
+    // File info
+    $imageUploadPath = $uploadPath . $fileName;
+    $fileType = pathinfo($imageUploadPath, PATHINFO_EXTENSION); 
+    $succes = false;
 
-        for ($i=0; $i<$cantidad; $i++){
+    // Permitimos solo extensiones de imagenes
+    if(in_array($fileType, $allowTypes)){ 
 
-            $name_img = $_FILES['image']['name'][$i];
-            $type_img = $_FILES['image']['type'][$i];
-            $size_img = $_FILES['image']['size'][$i];
+        // Comprimos y resizeamos imagen
+        $compressedImage = compressImage($imageTempSource, $imageUploadPath, 100, 1020); 
 
-            $extension = getImageExtension($type_img);
-            $new_name = $id_car .'_' .$i .$extension;
-
-            // subimos foto si el peso de la imagen es menor a...
-            if($size_img < $size_limit){
-                     // y es una imagen   
-                if($type_img == "image/jpeg" || $type_img == "image/jpg" || $type_img == "image/png" || $type_img == "image/gif"){
-                         //Subimos el fichero al servidor
-                         move_uploaded_file($_FILES["image"]["tmp_name"][$i], '../assets/cars_images/'.$new_name);
-                }else{
-                        echo ('no es una imagen');
-                }
-
-            }else{
-                    echo ('excede del size permitido');
-             }
-        }               
-}
-
-function getImageExtension($type_img){
-
-    $extension = '';
-
-    switch($type_img){
-        case 'image/jpeg': 
-            $extension = '.jpeg';
-            break; 
-        case 'image/jpg': 
-            $extension = '.jpg';
-             break;  
-        case 'image/png': 
-            $extension = '.png';
-            break;
-        case 'image/gif': 
-            $extension = '.gif';
-            break; 
-
+        if($compressedImage){ 
+            $succes = true;
+        }
     }
-
-    return $extension;
-   
+        
+    return $succes;
+                 
 }
-
 
 ?>

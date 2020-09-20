@@ -31,6 +31,7 @@ CREATE TABLE coche(
 CREATE TABLE imagen_coche (
 	id INT(11)NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	nombre varchar(255),
+	tipo varchar(255),
 	id_coche INT(11),
 	FOREIGN KEY (id_coche) REFERENCES coche (id) ON UPDATE  NO ACTION  ON DELETE  CASCADE
 );
