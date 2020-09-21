@@ -24,20 +24,10 @@ include("../model/db.php");
             <input type="text" class="form-control mt-3" id="garantia" placeholder="Garantía" name="garantia">
             <div id="carImages" class="mt-2">
             
-            <!-- MENSAJE ERROR SI NO ES UNA IMAGEN -->
-            <?php if(isset($_SESSION['error-type'])) {?>
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                   <?php  echo $_SESSION['error-type'] ?>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            <?php session_unset(); } ?>
-
-            <!-- MENSAJE ERROR SI EXCEDE DEL LIMITE DE TAMAÑO -->
-            <?php if(isset($_SESSION['error-size'])) {?>
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                   <?php  echo $_SESSION['error-size'] ?>
+            <!-- MENSAJE DE ERROR AL CARGAR DATOS DE COCHE -->
+            <?php if(isset($_SESSION['message'])) {?>
+                <div class="alert alert-<?php echo $_SESSION['message-type']?> alert-dismissible fade show" role="alert">
+                   <?php  echo $_SESSION['message'] ?>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

@@ -3,7 +3,6 @@
 include("../model/db.php");
 include("../model/encryptor.php");
 include("../plugins/compressImage.php");
-include("../plugins/resizeImage.php");
 
 if(isset($_POST['create_car'])){
 
@@ -13,15 +12,28 @@ if(isset($_POST['create_car'])){
     // si $id_car = -1 ha habido error al guardar en la base de datos
     if($id_car != -1){
         // si existe imagen de portada ...
+        
         if(isset($_FILES['main_image'])){
 
             $fileName = basename($_FILES['main_image']['name']);    
             $imageTempSource = $_FILES["main_image"]["tmp_name"];  
             $size_img = $_FILES['main_image']['size'];
-            $succes = uploadImage($fileName, $size_img, $imageTempSource);
-            // si la imagen se ha subido ok se insertan datos en la BBDD
-            if($succes)  insertImage($fileName, 'portada', $id_car, $conn);
-   
+
+            // size = 0 es que no ha habia foto
+            if($size_img > 0){
+
+                $succes = uploadImage($fileName, $size_img, $imageTempSource);
+                // si la imagen se ha subido ok se insertan datos en la BBDD
+                if($succes)  insertImage($fileName, 'portada', $id_car, $conn);
+
+            }else{
+         
+                $_SESSION['message'] = 'Vehiculo guardado correctamente aunque no se ha subido foto de portada';
+                $_SESSION['message-type'] = 'warning';
+            
+            }
+        
+      
         }
 
         // ... si existen imagenes secundarias
@@ -39,12 +51,11 @@ if(isset($_POST['create_car'])){
                 if($succes) insertImage($fileName, 'secundaria', $id_car, $conn);
 
             }
-
         }
 
-        //header("Location: ../views_admin/create_car.php");
-
     }
+
+    header("Location: ../views_admin/create_car.php");
 
 }
 
@@ -56,10 +67,13 @@ function insertImage($name_image, $tipo, $id_car, $conn){
 
     if(!$result){
 
-        die('Error al insertar datos imagen en BBDD');
+        $_SESSION['message'] = 'Hubo un error al insertar la imagen en la base de datos';
+        $_SESSION['message-type'] = 'danger';
 
     }else{
-        echo('Exito');
+
+        $_SESSION['message'] = 'Vehículo guardado correctamente';
+        $_SESSION['message-type'] = 'success';
     }
 
 }
@@ -77,8 +91,17 @@ function insertCar($conn){
         $color = $_POST['color'];
         $combustible = $_POST['combustible'];
         $garantia = $_POST['garantia'];
+        $id = -1;
 
-        // realizamos insercion en bbdd ..
+        if($marca == '' && $modelo == '' && $anyo == '' && $km == '' && $cambio == '' && $puertas == '' && $cv == '' 
+        && $color == '' && $combustible == '' && $garantia == ''){
+
+            $_SESSION['message'] = 'No se ha registrado el coche. No ha introducido ningún dato';
+            $_SESSION['message-type'] = 'danger';
+
+        }else{
+
+              // realizamos insercion en bbdd ..
         $query = "INSERT INTO coche (id, marca, modelo, anyo, km, cambio, puertas, cv, color, combustible, garantia) 
         values (null,'$marca','$modelo','$anyo','$km','$cambio','$puertas','$cv','$color','$combustible','$garantia')";
         $result = mysqli_query($conn, $query);
@@ -86,8 +109,10 @@ function insertCar($conn){
         // .. y recogemos el id que se ha creado para esa entrada
         $id = mysqli_insert_id($conn);
 
+        }
+
         // devolvemos el id o si falla insercion -1
-        if(!$result)   return -1;
+        if(!$result)   return $id;
         else return $id;
 
 }
