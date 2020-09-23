@@ -18,7 +18,7 @@
                 <a class="nav-link" href="./create_car.php">Añadir</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Stock</a>
+                <a class="nav-link" href="./stock_car.php">Stock</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="../index.php">Salir</a>

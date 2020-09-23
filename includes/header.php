@@ -30,7 +30,5 @@
 
     <title>J&S MotorSport</title>
     
-    <!-- <script src="js/admin.js"></script> -->
-
     
 </head>
