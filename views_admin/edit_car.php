@@ -31,6 +31,28 @@ include("../model/db.php");
             <input type="text" class="form-control mt-3" id="color" placeholder="color" name="color" <?php print(' value="'.$row['color'] .'"')?>>
             <input type="text" class="form-control mt-3" id="combustible" placeholder="combustible" name="combustible" <?php print(' value="'.$row['combustible'] .'"')?>>
             <input type="text" class="form-control mt-3" id="garantia" placeholder="garantia" name="garantia" <?php print(' value="'.$row['garantia'] .'"')?>>
+            <?php  $img_portada = getImagePortada($conn, $id_car); ?>
+            <?php  $imgs_secundarias = getImagesSecundarias($conn, $id_car); ?>
+            <div id="images" >
+                <div id="portada" >
+                    <div class="contentImg">
+                     <p class="imgTitle">Foto portada</p>
+                        <?php print('<img src="../assets/cars_images/'.  $img_portada .'" alt="Imagen coche">') ?>
+                        <button class="dlt-car" ><i class="far fa-trash-alt"></i></button>
+                    </div> 
+                </div>
+                <div id="secundarias">
+                    <p class="imgTitle">Fotos secundarias</p>
+                    <?php 
+                     while($row2 = mysqli_fetch_array( $imgs_secundarias)){
+                     print('<div class="contentImg">');
+                         print('<img src="../assets/cars_images/'.  $row2['nombre'] .'" alt="Imagen coche">'); ?>
+                        <button class="dlt-car" ><i class="far fa-trash-alt"></i></button>
+                    </div>
+                    <?php } ?>
+                </div>
+            </div>
+
             <div id="carImages" class="mt-2">
             <label for="">Imagen portada</label> <input type="file" name="main_image" value="">
             </div>
@@ -38,7 +60,6 @@ include("../model/db.php");
             <label for="">Imagenes secundarias</label><input type="file" name="image[]" value="" multiple>
             </div>
             <button id="btn-save-car" class="btn btn-primary mt-2" name="create_car">Guardar</button>
-            
         </div>
 </form>
 

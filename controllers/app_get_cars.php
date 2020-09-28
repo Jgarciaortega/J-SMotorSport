@@ -9,9 +9,9 @@ function getCars($conn){
 }
 
 
-function getImage($conn, $id_car){
+function getImagePortada($conn, $id_car){
 
-    $query = "SELECT nombre FROM imagen_coche WHERE id_coche = $id_car";
+    $query = "SELECT nombre FROM imagen_coche WHERE id_coche = $id_car AND tipo = 'portada'";
     $result = mysqli_query($conn, $query);
     
 
@@ -21,6 +21,15 @@ function getImage($conn, $id_car){
     }
 
     return $image;
+
+}
+
+function getImagesSecundarias($conn, $id_car){
+
+    $query = "SELECT * FROM imagen_coche WHERE id_coche = $id_car AND tipo = 'secundaria'";
+    $result = mysqli_query($conn, $query);
+
+    return $result;
 
 }
 

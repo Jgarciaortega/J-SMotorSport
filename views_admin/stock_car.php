@@ -39,7 +39,7 @@ $info_cars = getCars($conn);
                 <div class="col-sm">
                     <?php 
                         echo $row['id'];
-                        $image_car = getImage($conn, $row['id']);
+                        $image_car = getImagePortada($conn, $row['id']);
                      ?>
                 </div>
                 <div class="col-sm">

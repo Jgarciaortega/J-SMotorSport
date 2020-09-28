@@ -86,6 +86,26 @@ nav {
     display: none;
 }
 
+#images{
+    margin-top: 4%;
+}
+
+#images img{
+
+    width: 100%;
+}
+
+.contentImg{
+    margin-bottom:2%;
+    display: flex;
+    flex-direction: column;
+}
+
+.imgTitle{
+    text-decoration: underline;
+}
+
+
 /* .btns-edit-car button{
     font-size: 122%;
     margin: 1%;
