@@ -20,4 +20,6 @@ include("../includes/header_admin.php");
     </form>
    
 </div>
+    
+</body>
 

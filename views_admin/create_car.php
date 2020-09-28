@@ -10,6 +10,15 @@ include("../model/db.php");
 </div>
 
 <div class="container">
+ <!-- MENSAJE DE ERROR AL CARGAR DATOS DE COCHE -->
+ <?php if(isset($_SESSION['message'])) {?>
+                <div class="alert alert-<?php echo $_SESSION['message-type']?> alert-dismissible fade show" role="alert">
+                   <?php  echo $_SESSION['message'] ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+<?php session_unset(); } ?>
 <form method="post" action="../controllers/admin_create_car.php" enctype="multipart/form-data">
         <div class="form-group">
             <input type="text" class="form-control mt-3" id="marca" placeholder="Marca" name="marca">
@@ -24,16 +33,6 @@ include("../model/db.php");
             <input type="text" class="form-control mt-3" id="garantia" placeholder="Garantía" name="garantia">
             <div id="carImages" class="mt-2">
             
-            <!-- MENSAJE DE ERROR AL CARGAR DATOS DE COCHE -->
-            <?php if(isset($_SESSION['message'])) {?>
-                <div class="alert alert-<?php echo $_SESSION['message-type']?> alert-dismissible fade show" role="alert">
-                   <?php  echo $_SESSION['message'] ?>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            <?php session_unset(); } ?>
-
             <label for="">Imagen portada</label> <input type="file" name="main_image" value="">
             </div>
             <div id="carImages" class="mt-2">
@@ -45,6 +44,6 @@ include("../model/db.php");
     </form>
    
 </div>
-
-
+   
+</body>
 
