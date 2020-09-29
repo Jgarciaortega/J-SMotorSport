@@ -39,7 +39,7 @@ $info_cars = getCars($conn);
                 <div class="col-sm">
                     <?php 
                         echo $row['id'];
-                        $image_car = getImagePortada($conn, $row['id']);
+                        $image_car = getNameImagePortada($conn, $row['id']);
                      ?>
                 </div>
                 <div class="col-sm">
@@ -70,7 +70,7 @@ $info_cars = getCars($conn);
                     <?php print('<input type="text" name="id_car" value='. $row['id'] .'>')?>
                     <button type="submit" class="edit-car"><i class="fas fa-edit"></i></button>
                 </form>
-                <button class="dlt-car" ><i class="far fa-trash-alt"></i></button>
+                <button class="dlt-car" <?php print('data-id="'.$row['id'].'"') ?>><i class="far fa-trash-alt"></i></button>
             </div>
     </div>
 

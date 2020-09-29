@@ -11,7 +11,19 @@ include("../model/db.php");
 </div>
 
 <div class="container">
-
+<div id="modal-dlt-img" class="modal" tabindex="-1" role="dialog">'
+        <div class="modal-dialog" role="document">'
+            <div class="modal-content">
+             <div class="modal-header">
+                  <h5 class="modal-title">Confirme la eliminación de la imagen</h5>
+             </div>
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-primary" id="btn-delete-img">Si</button>
+                 <button type="button" class="btn btn-secondary" id="btn-noDelete-img" data-dismiss="modal">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
 <?php 
 
     $id_car = $_POST["id_car"];
@@ -33,26 +45,6 @@ include("../model/db.php");
             <input type="text" class="form-control mt-3" id="garantia" placeholder="garantia" name="garantia" <?php print(' value="'.$row['garantia'] .'"')?>>
             <?php  $img_portada = getImagePortada($conn, $id_car); ?>
             <?php  $imgs_secundarias = getImagesSecundarias($conn, $id_car); ?>
-            <div id="images" >
-                <div id="portada" >
-                    <div class="contentImg">
-                     <p class="imgTitle">Foto portada</p>
-                        <?php print('<img src="../assets/cars_images/'.  $img_portada .'" alt="Imagen coche">') ?>
-                        <button class="dlt-car" ><i class="far fa-trash-alt"></i></button>
-                    </div> 
-                </div>
-                <div id="secundarias">
-                    <p class="imgTitle">Fotos secundarias</p>
-                    <?php 
-                     while($row2 = mysqli_fetch_array( $imgs_secundarias)){
-                     print('<div class="contentImg">');
-                         print('<img src="../assets/cars_images/'.  $row2['nombre'] .'" alt="Imagen coche">'); ?>
-                        <button class="dlt-car" ><i class="far fa-trash-alt"></i></button>
-                    </div>
-                    <?php } ?>
-                </div>
-            </div>
-
             <div id="carImages" class="mt-2">
             <label for="">Imagen portada</label> <input type="file" name="main_image" value="">
             </div>
@@ -62,6 +54,28 @@ include("../model/db.php");
             <button id="btn-save-car" class="btn btn-primary mt-2" name="create_car">Guardar</button>
         </div>
 </form>
+<div id="images" >
+    <div id="portada" >
+            <p class="imgTitle">Foto portada</p>
+            <?php 
+            while($row2 = mysqli_fetch_array( $img_portada)){
+                print('<div class="contentImg" id="img-'.$row2['id'].'">');
+                print('<img src="../assets/cars_images/'.  $row2['nombre'] .'" alt="Imagen coche">'); ?>
+                <button class="dlt-img" <?php print('id-img="'.$row2['id'].'"') ?>><i class="far fa-trash-alt"></i></button>
+        </div> 
+        <?php } ?>
+    </div>
+     <div id="secundarias">
+            <p class="imgTitle">Fotos secundarias</p>
+            <?php 
+            while($row3 = mysqli_fetch_array( $imgs_secundarias)){
+                print('<div class="contentImg" id="img-'.$row3['id'].'">');
+                print('<img src="../assets/cars_images/'.  $row3['nombre'] .'" alt="Imagen coche">'); ?>
+                <button class="dlt-img" <?php print('id-img="'.$row3['id'].'"') ?>><i class="far fa-trash-alt"></i></button>
+    </div>
+            <?php } ?>
+    </div>
+</div>
 
 <?php 
 } 
